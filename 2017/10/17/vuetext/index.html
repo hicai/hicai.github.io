@@ -5,14 +5,25 @@
   
 
   
-  <title>阿蔡的博客</title>
+  <title>关于vue环境配置 | 阿蔡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿蔡的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1.安装node.js在node.js官网根据情况下载（Windows 系统 (.msi) 64位），选择安装路径后一直next下去 ，最后点击 Finish完成。  2.利用淘宝npm镜像安装相关依赖开始 》输入“cmd” ，打开。输入npm install –registry=https://registry.npm.taobao.org 回车安装  3.安装全局vue-cli脚手架在现在c">
+<meta name="keywords" content="日常记录帖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于vue环境配置">
+<meta property="og:url" content="http://yoursite.com/2017/10/17/vuetext/index.html">
 <meta property="og:site_name" content="阿蔡的博客">
+<meta property="og:description" content="1.安装node.js在node.js官网根据情况下载（Windows 系统 (.msi) 64位），选择安装路径后一直next下去 ，最后点击 Finish完成。  2.利用淘宝npm镜像安装相关依赖开始 》输入“cmd” ，打开。输入npm install –registry=https://registry.npm.taobao.org 回车安装  3.安装全局vue-cli脚手架在现在c">
+<meta property="og:image" content="http://yoursite.com/2017/10/17/vuetext/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/17/vuetext/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/17/vuetext/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/17/vuetext/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/17/vuetext/5.png">
+<meta property="og:updated_time" content="2018-03-17T14:56:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿蔡的博客">
+<meta name="twitter:title" content="关于vue环境配置">
+<meta name="twitter:description" content="1.安装node.js在node.js官网根据情况下载（Windows 系统 (.msi) 64位），选择安装路径后一直next下去 ，最后点击 Finish完成。  2.利用淘宝npm镜像安装相关依赖开始 》输入“cmd” ，打开。输入npm install –registry=https://registry.npm.taobao.org 回车安装  3.安装全局vue-cli脚手架在现在c">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/17/vuetext/1.png">
   
     <link rel="alternate" href="/atom.xml" title="阿蔡的博客" type="application/atom+xml">
   
@@ -63,9 +74,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-vuetext" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-vuetext" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/17/vuetext/" class="article-date">
   <time datetime="2017-10-17T14:53:14.000Z" itemprop="datePublished">2017-10-17</time>
@@ -78,8 +87,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/17/vuetext/">关于vue环境配置</a>
+    <h1 class="article-title" itemprop="name">
+      关于vue环境配置
     </h1>
   
 
@@ -114,72 +123,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Environment" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/17/Environment/" class="article-date">
-  <time datetime="2017-03-17T13:19:48.000Z" itemprop="datePublished">2017-03-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/Environment/">关于node.js和gulp配置环境问题</a>
-    </h1>
+    <a href="/2017/03/17/Environment/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">关于node.js和gulp配置环境问题</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前段时间接触ajax的时候发现笔记本的配置环境出了问题，很不方便。用apache配置略繁琐，考虑到不是大型项目，用node.js配置就够了。查找资料后研究了好久，总是安装好了，记录一下步骤，记忆不好以防日后需要。</p>
-<ul>
-<li><p><strong>1.安装node.j</strong><br>在node.js官网根据情况下载（Windows 系统 (.msi) 64位），选择安装路径后一直next下去 ，最后点击 Finish完成。</p>
-</li>
-<li><p><strong>2.打开cmd</strong><br>开始 》输入“cmd” ，打开。输入“path” 查看环境变量是否已安装了node.js。 然后输入”node –version”、”npm -version” 查看node.js版本<br><img src="/2017/03/17/Environment/1.png" alt="你想输入的替代文字"></p>
-</li>
-<li><p><strong>3.新建存放文件</strong><br>先在E盘(任意盘)新建一个“webserver”（任意命名）的文件，然后在里面新建一个src文件。再src里面新建5个文件并命名。<br>将gulp配置文件package.json、gulpfile.js 等文件下载后放到“webserver”下面。<br><a href="http://pan.baidu.com/s/1bpm2UZX" target="_blank" rel="noopener">gulpfile.js配置文件下载</a><br><img src="/2017/03/17/Environment/2.png" alt="你想输入的替代文字"><br>然后在cmd输入“npm install gulp -g” 回车安装插件。<br><img src="/2017/03/17/Environment/3.png" alt="你想输入的替代文字"><br>安装之后再输入npm install回车。<br><img src="/2017/03/17/Environment/4.png" alt="你想输入的替代文字"><br>安装后，再看下webserver文件里面会多出一个‘’node_modules”文件，总算安装成功。<br><img src="/2017/03/17/Environment/5.png" alt="你想输入的替代文字"></p>
-</li>
-<li><p><strong>4.打开webserver   gulpfile.js文件修改</strong><br>先在E盘(任意盘)新建一个“webserver”（任意命名）的文件，然后在里面新建一个src文件。再src里面新建5个文件并命名。<br>把这个位置的代码删掉，改成：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server: &#123;baseDir: &apos;./&apos;&#125;,//根目录启动服务器</span><br></pre></td></tr></table></figure>
-<p>看到一个前端博客写如果没有打开iis服务器的话就要修改…..emm..没安装 跟着贴过去好了</p>
-<p><img src="/2017/03/17/Environment/6.png" alt="你想输入的替代文字"></p>
-<p><strong>5.打开Node.js command prompt</strong><br><img src="/2017/03/17/Environment/7.png" alt="你想输入的替代文字"></p>
-<p>输入 gulp+回车，浏览器自动弹出。</p>
-<p><img src="/2017/03/17/Environment/8.png" alt="你想输入的替代文字"></p>
-<p>这时“webserver”下多了一个”dist”文件。</p>
-<p><img src="/2017/03/17/Environment/9.png" alt="你想输入的替代文字"></p>
-<p>配置环境成功。把项目放在src里面看下</p>
-<p><img src="/2017/03/17/Environment/10.png" alt="你想输入的替代文字"><br><strong>总结</strong></p>
-<p>1.之前配置环境失败原因大概就是cmd路径填写错误和缺失配置文件导致，还有在最后一步输入gulp的时候把cmd关了导致。</p>
-<p>2.关于webserver下关于新建src文件的问题。一开始没新建 ，项目放在“webserver”下也可以在本地服务器查看到。但如果修改文件后保存，浏览器不能自动预览。 src文件用来放置项目后，修改代码保存后浏览器自动预览,自动合并压缩文件放到dist文件下。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/Environment/" data-id="cjevi3u1a0001x0qu9s0tz687" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日常记录帖/">日常记录帖</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
