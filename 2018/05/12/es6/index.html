@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="http://img.qqai.net/uploads/i_4_3888901230x433958408_21.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.常量在ES3中，没有常量这一说。在ES5中，通过变量的定义只读，不可修改。在ES6中，用const定义常量也是只读，不可修改。 举个例子,设置圆周率PI的值： 12345//es5写法Object.defineProperty(window,&amp;apos;PI&amp;apos;,&amp;#123;    value:3.1415926,//定义属性值    writable:false,//是否只读&amp;#12">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6和ES5语法区别（常量、作用域、箭头函数）">
+<meta property="og:url" content="http://yoursite.com/2018/05/12/es6/index.html">
+<meta property="og:site_name" content="阿蔡的博客">
+<meta property="og:description" content="1.常量在ES3中，没有常量这一说。在ES5中，通过变量的定义只读，不可修改。在ES6中，用const定义常量也是只读，不可修改。 举个例子,设置圆周率PI的值： 12345//es5写法Object.defineProperty(window,&amp;apos;PI&amp;apos;,&amp;#123;    value:3.1415926,//定义属性值    writable:false,//是否只读&amp;#12">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/9.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/10.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/12/es6/11.jpg">
+<meta property="og:updated_time" content="2018-05-12T15:52:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6和ES5语法区别（常量、作用域、箭头函数）">
+<meta name="twitter:description" content="1.常量在ES3中，没有常量这一说。在ES5中，通过变量的定义只读，不可修改。在ES6中，用const定义常量也是只读，不可修改。 举个例子,设置圆周率PI的值： 12345//es5写法Object.defineProperty(window,&amp;apos;PI&amp;apos;,&amp;#123;    value:3.1415926,//定义属性值    writable:false,//是否只读&amp;#12">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/12/es6/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/12/es6/"/>
+
+
+
+
+
+  <title>ES6和ES5语法区别（常量、作用域、箭头函数） | 阿蔡的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿蔡的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端届的淡水狗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿蔡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿蔡的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6和ES5语法区别（常量、作用域、箭头函数）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T23:42:19+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-常量"><a href="#1-常量" class="headerlink" title="1.常量"></a>1.常量</h2><p>在ES3中，没有常量这一说。<br>在ES5中，通过变量的定义只读，不可修改。<br>在ES6中，用const定义常量也是只读，不可修改。</p>
+<p>举个例子,设置圆周率PI的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//es5写法</span><br><span class="line">Object.defineProperty(window,&apos;PI&apos;,&#123;</span><br><span class="line">    value:3.1415926,//定义属性值</span><br><span class="line">    writable:false,//是否只读</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在控制台看<br><img src="/2018/05/12/es6/1.jpg" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//es6写法</span><br><span class="line">const PI = 3.1415926;</span><br><span class="line">console.log(PI)</span><br></pre></td></tr></table></figure>
+<p>在控制台结果<br><img src="/2018/05/12/es6/2.jpg" alt="这里写图片描述"></p>
+<p>如果赋值PI = 4,那么将会报错<br><img src="/2018/05/12/es6/3.jpg" alt="这里写图片描述"></p>
+<p><strong>总结：es5和es6的常量在运行时是不一样的，es5中常量赋值不会成功，也不会报错</strong></p>
+<hr>
+<h2 id="2-作用域"><a href="#2-作用域" class="headerlink" title="2.作用域"></a>2.作用域</h2><p>ES5和ES6区别</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//ES5作用域</span><br><span class="line">var callbacks = [];</span><br><span class="line">for(var i = 0; i &lt;= 2; i++)&#123;</span><br><span class="line">    callbacks[i] = function() &#123;</span><br><span class="line">        return i * 2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.table([</span><br><span class="line">   callbacks[0](),</span><br><span class="line">   callbacks[1](),</span><br><span class="line">   callbacks[2]() </span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">//ES6作用域</span><br><span class="line">const callbacks2 = [];</span><br><span class="line">for(let j = 0; j &lt;= 2; j++)&#123;</span><br><span class="line">    callbacks2[j] = function()&#123;</span><br><span class="line">        return j * 2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.table([</span><br><span class="line">   callbacks2[0](),</span><br><span class="line">   callbacks2[1](),</span><br><span class="line">   callbacks2[2]()</span><br><span class="line"> ])</span><br></pre></td></tr></table></figure>
+<p>控制台结果：<br><img src="/2018/05/12/es6/4.jpg" alt="这里写图片描述">  </p>
+<p>额。。。值得注意的是，在ES5作用域中返回的结果都会6，var i = 0是全局中的变量，  return i * 2 返回的不是一个值，而是一个表达式 ，所以callbacks 内部 function 形成一个闭包，但闭包内并没有声明内部的 i 变量，因此 i 变量从for 循环内声明的全局变量中取得，从全局变量中取得时的 i=3 是最终计算量。</p>
+<p>而在ES6中 let申明使每次产生新的作用域 (块级作用域) 也就是把当前的j值保存下来，供内部作用域使用，不再担心闭包的副作用，所以不出现上述情况。</p>
+<p>再举个例子，如果我们用块作用域给代码做隔离：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//ES5语法</span><br><span class="line">;((function()&#123;</span><br><span class="line">   var foo = function()&#123;</span><br><span class="line">      return 1</span><br><span class="line">   &#125;;</span><br><span class="line">   console.log(&quot;函数foo()===1&quot;,foo()===1);</span><br><span class="line">   ;((function()&#123;</span><br><span class="line">     var foo = function()&#123;</span><br><span class="line">      return 2</span><br><span class="line">     &#125;;</span><br><span class="line">      console.log(&quot;函数foo()===2&quot;,foo()===2);</span><br><span class="line">   &#125;)())</span><br><span class="line">&#125;)())</span><br><span class="line"></span><br><span class="line">//ES6语法</span><br><span class="line">&#123;</span><br><span class="line">   function foo()&#123;</span><br><span class="line">       return 1</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&quot;函数foo()===1&quot;,foo()===1);</span><br><span class="line">    &#123;</span><br><span class="line">       function foo()&#123;</span><br><span class="line">         return 2</span><br><span class="line">       &#125;</span><br><span class="line">       console.log(&quot;函数foo()===2&quot;,foo()===2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>控制台结果<br><img src="/2018/05/12/es6/5.jpg" alt="这里写图片描述"></p>
+<p><strong>总结：ES5 中通过立即执行函数来创建块级作用域，ES6中可直接使用花括号来创建块级作用域</strong></p>
+<hr>
+<p>题外话：这里关于let和var、const区别：</p>
+<p><strong><em>使用var声明的变量，其作用域为该语句所在的函数内，且存在变量提升现象；</em></strong><br><strong><em>使用let声明的变量，其作用域为该语句所在的代码块内，不存在变量提升；</em></strong><br><strong><em>使用const声明的是常量，在后面出现的代码中不能再修改该常量的值。</em></strong></p>
+<p><a href="https://www.zhihu.com/question/52662013" target="_blank" rel="noopener">知乎，关于JavaScript中var、let、const区别？</a></p>
+<hr>
+<h2 id="3-箭头函数"><a href="#3-箭头函数" class="headerlink" title="3.箭头函数"></a>3.箭头函数</h2><p>ES3、ES5普通函数 ： function a(){}<br>ES6箭头函数： () =&gt; {};</p>
+<p>举个例子，通过map方法将原数组“映射”成对应的新数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//ES3，ES5写法</span><br><span class="line">var a = [1,2,3,4,5];</span><br><span class="line">var b = a.map(function(i) &#123;</span><br><span class="line">  return i + 1</span><br><span class="line">&#125;);</span><br><span class="line"> console.log(a,b);</span><br></pre></td></tr></table></figure>
+<p>控制台结果<br><img src="/2018/05/12/es6/8.jpg" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//ES6写法</span><br><span class="line">let a = [1,2,3,4,5];</span><br><span class="line">let b = a.map(i =&gt; i + 1)</span><br><span class="line">console.log(a,b);</span><br></pre></td></tr></table></figure>
+<p>控制台结果：<br><img src="/2018/05/12/es6/9.jpg" alt="这里写图片描述"></p>
+<p><strong>总结：箭头函数和普通函数在再于let的绑定；当函数只有一个参数时，可以省略括号，但函数只返回一个值时，可以省略花括号</strong></p>
+<p><img src="/2018/05/12/es6/10.jpg" alt="这里写图片描述"> 然后~这里还要说下关于箭头函数this指向问题。<br><strong>注意：普通函数this指向:是该函数被调用的的对象，箭头函数：定义时this的指向（指向全局window对象）</strong></p>
+<p>再举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//ES3，ES5</span><br><span class="line">function foo()&#123;</span><br><span class="line">   this.a = &apos;a&apos;;</span><br><span class="line">   this.b = &apos;b&apos;;</span><br><span class="line">   this.c = &#123;</span><br><span class="line">      a: &apos;a+&apos;,</span><br><span class="line">      b: function() &#123;</span><br><span class="line">        return this.a</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(new foo().c.b());</span><br><span class="line"></span><br><span class="line">//ES6</span><br><span class="line">function foo2()&#123;</span><br><span class="line">  this.a = &apos;a&apos;;</span><br><span class="line">  this.b = &apos;b&apos;; </span><br><span class="line">  this.c = &#123;</span><br><span class="line">    a:&apos;a+&apos;,</span><br><span class="line">    b:() =&gt; &#123;</span><br><span class="line">      return this.a</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(new foo2().c.b());</span><br></pre></td></tr></table></figure></p>
+<p>控制台效果：<br><img src="/2018/05/12/es6/11.jpg" alt="这里写图片描述"></p>
+<p><strong>这里可以看到实例化一个foo对象后，调用c对象里面的b方法。在普通函数this指向的是该函数被调用的对象，也就是c对象，所以输出a+。而在ES6箭头函数中，函数体内的this.a是构造函数foo定义的this.a，所以输出a。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/12/webpack/" rel="next" title="webpack安装（构建ES6的编译环境）">
+                <i class="fa fa-chevron-left"></i> webpack安装（构建ES6的编译环境）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/1.jpg"
+                alt="阿蔡" />
+            
+              <p class="site-author-name" itemprop="name">阿蔡</p>
+              <p class="site-description motion-element" itemprop="description">工作/生活/记录</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/acaihaiyan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zcool.com.cn/u/13045463" target="_blank" title="站酷">
+                      
+                        <i class="fa fa-fw fa-globe"></i>站酷</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/2297865134?is_hot=1" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/meng-xiao-yi-28" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                常用网站
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.uisdc.com/" title="优设" target="_blank">优设</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank">百度前端技术学院</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank">google前端开发基础</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-常量"><span class="nav-number">1.</span> <span class="nav-text">1.常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-作用域"><span class="nav-number">2.</span> <span class="nav-text">2.作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-箭头函数"><span class="nav-number">3.</span> <span class="nav-text">3.箭头函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿蔡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

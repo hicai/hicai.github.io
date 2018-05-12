@@ -87,18 +87,14 @@
 <meta property="og:site_name" content="阿蔡的博客">
 <meta property="og:description" content="一本正经的介绍AJAX：Asynchronous JavaScript and XML （异步的 JavaScript 和 XML）Ajax 不是某种编程语言，是一种在无需重新加载整个网页的情况下能够更新部分网页的技术。 1.同步与异步 Ajax三步骤：    运用HTML和CSS实现页面，表达信息； 运用XMLHttpRequest和web服务器进行数据的异步交换； 运用JavaScript操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/5.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/6.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/7.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/3.jpg">
-<meta property="og:updated_time" content="2018-05-12T15:05:16.000Z">
+<meta property="og:updated_time" content="2018-05-12T15:23:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax概念、原理、">
 <meta name="twitter:description" content="一本正经的介绍AJAX：Asynchronous JavaScript and XML （异步的 JavaScript 和 XML）Ajax 不是某种编程语言，是一种在无需重新加载整个网页的情况下能够更新部分网页的技术。 1.同步与异步 Ajax三步骤：    运用HTML和CSS实现页面，表达信息； 运用XMLHttpRequest和web服务器进行数据的异步交换； 运用JavaScript操作">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/4.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/7.jpg">
 
 
 
@@ -328,14 +324,13 @@
 </ul>
 <p>打个比方比如填写用户注册表单：</p>
 <p><strong>同步</strong>：当用户填写完信息之后，全部提交给服务器，等待服务器的回应，是一次性全部的。这就可能造成，提交后发现某处错误 需要重新返回填写表单。</p>
-<p><img src="/2018/04/28/Ajax-Introduction/4.jpg" alt="这里写图片描述"><img src="/2018/04/28/Ajax-Introduction/5.jpg" alt="这里写图片描述"></p>
 <p><strong>异步</strong>：当用户填写完一条信息之后，这条信息会自动向服务器提交，然后服务器响应客户端，在此过程中，用户依然在填写表格的信息，即向服务器请求多次，如果填写错，则页面提醒表单错误，节省了用户的时间，提高了用户的体验。</p>
 <p><em>XMLhttpRequest对象来实现这一功能，也需要javascript来操作DOM实现局部的信息更新。</em></p>
 <hr>
 <p><strong>2. Ajax-XMLHttpRequest对象创建</strong></p>
 <p>处理兼容性，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var request;</span><br><span class="line">if(window.XMLHttpRequest)&#123;</span><br><span class="line">  //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</span><br><span class="line">   request = new XMLHttpRequest(); </span><br><span class="line">&#125;else&#123;</span><br><span class="line">  // IE6, IE5 浏览器执行代码</span><br><span class="line">   request = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后发现一个问题<img src="/2018/04/28/Ajax-Introduction/6.jpg" alt="这里写图片描述">就是在日常接触中，new出一个ActiveXObject对象括号里的Msxml2.XMLHTTP，还有编辑器默认的是Microsoft.XMLHTTP</p>
+<p>然后发现一个问题,就是在日常接触中，new出一个ActiveXObject对象括号里的Msxml2.XMLHTTP，还有编辑器默认的是Microsoft.XMLHTTP</p>
 <p>这里注意一下 new ActiveXObject(“<strong>Msxml2.XMLHTTP</strong>“); 和<br>new ActiveXObject(‘<strong>Microsoft.XMLHTTP</strong>‘);  的区别。</p>
 <p>百度了下大概是：<br>Msxml2.XMLHTTP是高版本,受msxml3.dll+支持<br>Microsoft.XMLHTTP是低本,一般是msxml2.6以下版本使用</p>
 <hr>
@@ -343,7 +338,7 @@
 <p>一个完整的【<strong>HTTP请求</strong>】过程有7个步骤：</p>
 <p>1&gt;建立TCP连接（TCP即传输控制协议）<br>2&gt;Web浏览器向Web服务器发送请求命令<br>3&gt;Web浏览器发送请求头信息<br>4&gt;Web服务器应答<br>5&gt;Web服务器发送应答头信息<br>6&gt;Web服务器向浏览器发送数据<br>7&gt;Web服务器关闭TCP连接</p>
 <p><strong>HTTP请求一般由4部分组成</strong><br>1.HTTP请求的方法或动作，post或get<br>2.正在请求的URL<br>3.请求头，包含一些客户端环境信息，身份验证信息等<br>4.请求体(请求正文)，包含要发送的一些字符串信息,表单信息等等<br>//请求头和请求体之间有一个空行，表面请求头已经结束</p>
-<p>举个例子 <img src="/2018/04/28/Ajax-Introduction/6.jpg" alt="这里写图片描述"></p>
+<p>举个例子 !</p>
 <p><strong>【HTTP响应】</strong><br>一般由3部分组成：<br>①一个数字或文字组成的状态码，用来显示请求是成功还是失败<br>②响应头，和请求头一样包含许多有用信息，如服务器类型、日期时间、内容类型和长度等<br>③响应体，即响应正文//响应头和响应体之间有空行</p>
 <p><strong>【HTTP状态码】</strong><br>1XX：信息类，表示收到Web浏览器请求，正在进一步处理中<br>2XX:成功，表示用户请求被正确接收<br>3XX:重定向，表示请求没有成功，客户必须采取进一步动作<br>4XX:客户端错误，表示客户端提交的请求有错误，例如：404 NOT Found,意味着请求中所引用的文档不存在<br>5XX:服务器错误，表示服务器不能完成对请求的处理，如：500</p>
 <p>————————————–这是一条分割线——————————————–</p>
@@ -414,6 +409,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/08/es6-2/" rel="prev" title="ES6和ES5语法区别（默认参数、对象代理）">
+                ES6和ES5语法区别（默认参数、对象代理） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,7 +519,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
