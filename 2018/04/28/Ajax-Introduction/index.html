@@ -82,7 +82,7 @@
 <meta name="description" content="一本正经的介绍AJAX：Asynchronous JavaScript and XML （异步的 JavaScript 和 XML）Ajax 不是某种编程语言，是一种在无需重新加载整个网页的情况下能够更新部分网页的技术。 1.同步与异步 Ajax三步骤：    运用HTML和CSS实现页面，表达信息； 运用XMLHttpRequest和web服务器进行数据的异步交换； 运用JavaScript操作">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ajax概念、原理、">
+<meta property="og:title" content="Ajax概念、原理（后续:ES6 Promise对象实现Ajax操作例子）">
 <meta property="og:url" content="http://yoursite.com/2018/04/28/Ajax-Introduction/index.html">
 <meta property="og:site_name" content="阿蔡的博客">
 <meta property="og:description" content="一本正经的介绍AJAX：Asynchronous JavaScript and XML （异步的 JavaScript 和 XML）Ajax 不是某种编程语言，是一种在无需重新加载整个网页的情况下能够更新部分网页的技术。 1.同步与异步 Ajax三步骤：    运用HTML和CSS实现页面，表达信息； 运用XMLHttpRequest和web服务器进行数据的异步交换； 运用JavaScript操作">
@@ -90,9 +90,9 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/7.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/3.jpg">
-<meta property="og:updated_time" content="2018-05-12T15:23:02.000Z">
+<meta property="og:updated_time" content="2018-07-26T16:52:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ajax概念、原理、">
+<meta name="twitter:title" content="Ajax概念、原理（后续:ES6 Promise对象实现Ajax操作例子）">
 <meta name="twitter:description" content="一本正经的介绍AJAX：Asynchronous JavaScript and XML （异步的 JavaScript 和 XML）Ajax 不是某种编程语言，是一种在无需重新加载整个网页的情况下能够更新部分网页的技术。 1.同步与异步 Ajax三步骤：    运用HTML和CSS实现页面，表达信息； 运用XMLHttpRequest和web服务器进行数据的异步交换； 运用JavaScript操作">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/28/Ajax-Introduction/7.jpg">
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>Ajax概念、原理、 | 阿蔡的博客</title>
+  <title>Ajax概念、原理（后续:ES6 Promise对象实现Ajax操作例子） | 阿蔡的博客</title>
   
 
 
@@ -165,7 +165,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">前端届的淡水狗</p>
+        <p class="site-subtitle">前端淡水狗，变态发育中。</p>
       
   </div>
 
@@ -264,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ajax概念、原理、</h1>
+          <h1 class="post-title" itemprop="name headline">Ajax概念、原理（后续:ES6 Promise对象实现Ajax操作例子）</h1>
         
 
         <div class="post-meta">
@@ -371,6 +371,12 @@
 <p><strong>监听readyState属性，请求过程</strong><br>readyState属性的变化代表服务器响应的变化<br>0：请求未初始化，open还没有调用<br>1：服务器连接已建立，open已经调用了<br>2：请求已接收，也就是接收到头信息了<br>3：请求处理中，也就是接收到了响应主体<br>4：请求已完成，且响应已就绪，也就是响应完成了</p>
 <p><strong>建立异步请求的过程4个步骤：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();  //创建一个XMLHttpRequest对象</span><br><span class="line">request.open(&apos;GET&apos;,url,true); //调用open方法，准备请求</span><br><span class="line">request.sell(); //调用sell方法，发送请求传递一些参数，get请求可忽略</span><br><span class="line">request.onreadystatechange = function()&#123; //过程进行监听,响应请求成功时，发生事件</span><br><span class="line">   if(request.readState === 400 &amp;&amp; request.status == 2)&#123;</span><br><span class="line">       request.responseText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>##后续：ES6 Promise对象实现异步加载</p>
+<p>最近学习深入浅出ES6中Promise一章里提到关于Promise对象实现Ajax操作例子。补充一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> var getJSON = function(url)&#123;</span><br><span class="line">     var promise = new Promise(function(resolve,reject)&#123;</span><br><span class="line">         var request = new XMLHttpRequest(); //创建一个XMLHttpRequest对象</span><br><span class="line">         request.open(&apos;GET&apos;,url);  //准备请求</span><br><span class="line">         request.onreadystatechange = handler; //过程进行监听,响应请求成功时，发生事件</span><br><span class="line">         request.responseType = &apos;json&apos;; //请求的数据类型</span><br><span class="line">         request.setRequestHeader(&apos;Accept&apos;,&apos;application/json&apos;);//向请求添加 HTTP 头。</span><br><span class="line">         request.send();//发送请求,get请求不填或填null</span><br><span class="line">         </span><br><span class="line">         function handler()&#123;</span><br><span class="line">            if(this.readyState !== 4)&#123; //如果请求失败,直接中断</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if(this.status === 200)&#123;  //如果状态码请求被正确接收</span><br><span class="line">               resolve(this.response); //调用resolve回调函数   </span><br><span class="line">            &#125;else&#123; //否则抛出错误</span><br><span class="line">                reject(new Error(this.statusText));</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">         &#125;;</span><br><span class="line"></span><br><span class="line">     &#125;);</span><br><span class="line">     </span><br><span class="line">      return promise;  //返回结果</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    getJSON(&quot;/posts.json&quot;).then(function(json)&#123;</span><br><span class="line">         console.log(&apos;contents:&apos; + json);</span><br><span class="line">    &#125;,function(error)&#123;</span><br><span class="line">         console.error(&apos;出错了&apos;, error);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://jsrun.net/tutorial/jZKKp" target="_blank" rel="noopener">ES6Promise对象章节</a></p>
+<p><strong>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；</strong></p>
+
       
     </div>
     
@@ -519,7 +525,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
