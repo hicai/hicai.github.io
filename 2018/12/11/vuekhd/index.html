@@ -11,8 +11,29 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #80a5fb; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #80a5fb, 0 0 5px     #80a5fb; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #80a5fb;    /*上边框颜色*/
+        border-left-color: #80a5fb;    /*左边框颜色*/
+    }
+</style>
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,7 +89,7 @@
 
 
 
-  <meta name="keywords" content="vue," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,7 +101,6 @@
 
 
 <meta name="description" content="客户端存储关于客户端存储：通过把数据存储在浏览器中，用户不必每次都向服务器请求获取同一个信息。离线时，使用本地存储的数据而不是向远端服务器上请求数据就显得非常有用。 Local Storage 适合存储你希望进行持久化的较小数据集，比如用户偏好设置或表单数据。 注意：存储对象和数组这样更复杂的数据，必须使用 JSON 来对数据进行序列化和反序列化。 太多废话了直接正题 我是一个小案例：123456">
-<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue客户端存储">
 <meta property="og:url" content="http://yoursite.com/2018/12/11/vuekhd/index.html">
@@ -91,7 +111,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/11/vuekhd/8.gif">
 <meta property="og:image" content="http://yoursite.com/2018/12/11/vuekhd/11.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/11/vuekhd/9.gif">
-<meta property="og:updated_time" content="2019-03-11T09:29:58.000Z">
+<meta property="og:updated_time" content="2019-03-11T10:21:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue客户端存储">
 <meta name="twitter:description" content="客户端存储关于客户端存储：通过把数据存储在浏览器中，用户不必每次都向服务器请求获取同一个信息。离线时，使用本地存储的数据而不是向远端服务器上请求数据就显得非常有用。 Local Storage 适合存储你希望进行持久化的较小数据集，比如用户偏好设置或表单数据。 注意：存储对象和数组这样更复杂的数据，必须使用 JSON 来对数据进行序列化和反序列化。 太多废话了直接正题 我是一个小案例：123456">
@@ -206,12 +226,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -243,7 +283,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
   
   
   
@@ -288,6 +328,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -346,12 +408,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/vue/" rel="tag"># vue</a>
-          
-        </div>
-      
 
       
       
@@ -361,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/11/vue-module/" rel="next" title="Vue组件实例">
-                <i class="fa fa-chevron-left"></i> Vue组件实例
+              <a href="/2018/12/07/vuecc/" rel="next" title="vue客户端存储">
+                <i class="fa fa-chevron-left"></i> vue客户端存储
               </a>
             
           </div>
@@ -480,12 +536,21 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -507,9 +572,15 @@ var jiathis_config={
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/acaihaiyan" target="_blank" title="GitHub">
+                    <a href="https://github.com/hicai" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-ioxhost"></i>csdn</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -525,7 +596,7 @@ var jiathis_config={
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/acaia/activities" target="_blank" title="知乎">
+                    <a href="https://www.zhihu.com/people/acaia/" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-globe"></i>知乎</a>
                   </span>
@@ -544,10 +615,6 @@ var jiathis_config={
                 常用网站
               </div>
               <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.uisdc.com/" title="优设" target="_blank">优设</a>
-                  </li>
                 
                   <li class="links-of-blogroll-item">
                     <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
@@ -608,7 +675,8 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
